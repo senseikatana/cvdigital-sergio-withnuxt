@@ -1,0 +1,39 @@
+{
+  "name": "cv-sergio-nuxt",
+  "version": "2.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "test": "vitest run",
+    "lint": "eslint .",
+    "deploy": "nuxt generate && wrangler deploy",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "@fontsource-variable/inter": "^5.2.5",
+    "@fontsource-variable/jetbrains-mono": "^5.2.5",
+    "@nuxt/ui": "^4.11.0",
+    "nuxt": "^4.5.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@iconify-json/lucide": "^1.2.0",
+    "@iconify-json/simple-icons": "^1.2.0",
+    "eslint": "^10.10.0",
+    "eslint-plugin-vue": "^10.11.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.6.0",
+    "typescript-eslint": "^8.70.0",
+    "vitest": "^3.0.0",
+    "wrangler": "^4.70.0"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,mjs,cjs}": [
+      "eslint --fix"
+    ]
+  }
+}
