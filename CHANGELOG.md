@@ -98,6 +98,33 @@
 - Store with cart and Stripe checkout
 - Unit tests with Vitest
 
+## [2.0.2] - 2026-10-24
+
+Highlights: fix: app/assets/css/main.css: update theme colors.
+
+- [x] 🐛 fix: app/assets/css/main.css: update theme colors
+  - `AGENTS.md`
+  - `app/app.config.ts`
+  - `app/assets/css/main.css`
+  - `app/assets/index.html`
+  - `app/components/Header.vue`
+  - `app/components/HomeCv.vue`
+  - `app/components/LangSwitcher.vue`
+  - `app/components/ThemeToggle.vue`
+  - `app/data/content.json`
+  - `app/data/resume.ts`
+  - `app/pages/ca/index.vue`
+  - `app/pages/en/index.vue`
+  - `app/pages/index.vue`
+  - `app/pages/resume/[lang]/[page].vue`
+  - `app/pages/resume/[lang]/index.vue`
+  - `app/plugins/katana-theme.client.ts`
+  - `bun.lock`
+  - `eslint.config.mjs`
+  - `nuxt.config.ts`
+  - `package.json`
+- [x] 🔹 ]7;file://localhost/home/senseikatana/Proyectos/cvdigital-sergio-withnuxtbun add v1.4.4 (38afee6c8)
+
 ## [2.0.1] - 2026-10-24
 
 Maintenance release with 1 change.
