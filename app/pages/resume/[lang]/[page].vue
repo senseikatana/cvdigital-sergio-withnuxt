@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { meta, profiles, services, type ProfileId } from '~/data/resume'
+import { meta, profiles, type ProfileId } from '~/data/resume'
 
 const route = useRoute()
 const { lang, t } = useLang()
@@ -13,7 +13,7 @@ const profile = computed(() => (isProfile.value ? profiles[page.value as Profile
 
 const pageTitle = computed(() => {
   if (profile.value) return profile.value.title
-  return page.value === 'services' ? t.value.servicesTitle : t.value.contactTitle
+  return page.value === 'contact' ? t.value.contactTitle : (profile.value?.title ?? t.value.contactTitle)
 })
 
 useResumeSeo(pageTitle.value, `${page.value}/`)
@@ -27,54 +27,8 @@ const whatsappUrl = `https://wa.me/${meta.whatsapp}?text=${encodeURIComponent(t.
 
 <template>
   <div>
-    <!-- Servicios -->
-    <section v-if="page === 'services'" class="py-16 lg:py-20">
-      <div class="mx-auto w-full max-w-6xl px-5 sm:px-8">
-        <p class="mb-5 inline-flex items-center gap-2 font-mono text-xs text-sky-400">
-          <span class="size-2 rounded-full bg-emerald-400 ring-4 ring-emerald-400/20" />
-          {{ t.servicesSubtitle }}
-        </p>
-        <h1 class="mb-3 text-[clamp(1.9rem,4vw,2.6rem)] font-bold tracking-tight text-white-50">{{ t.servicesTitle }}</h1>
-        <p class="max-w-2xl text-white-400">{{ t.servicesIntro }}</p>
-
-        <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <article
-            v-for="service in services[lang]"
-            :key="service.title"
-            class="reveal rounded-xl border border-dark-700/70 bg-dark-800/60 p-5 transition-all hover:-translate-y-0.5 hover:border-dark-600"
-          >
-            <h2 class="font-semibold text-white-100">{{ service.title }}</h2>
-            <p class="mt-2 text-sm text-white-400">{{ service.description }}</p>
-          </article>
-        </div>
-
-        <div class="reveal relative mt-12 overflow-hidden rounded-2xl border border-dark-700/70 bg-dark-800/60 p-8 text-center">
-          <div class="cta-glow pointer-events-none absolute inset-0 opacity-25" />
-          <div class="relative">
-            <p class="mb-6 text-white-400">{{ t.contactSubtitle }}</p>
-            <div class="flex flex-wrap justify-center gap-3">
-              <NuxtLink
-                :to="resumePath(lang, 'contact')"
-                class="inline-flex items-center gap-2 rounded-xl bg-rose-500 px-5 py-2.5 text-sm font-semibold text-white-50 transition-colors hover:bg-rose-400"
-              >
-                <UIcon name="i-lucide-mail" class="size-4" />
-                {{ t.nav.contact }}
-              </NuxtLink>
-              <NuxtLink
-                :to="resumePath(lang)"
-                class="inline-flex items-center gap-2 rounded-xl border border-dark-600 bg-dark-900/50 px-5 py-2.5 text-sm font-semibold text-white-200 transition-colors hover:border-rose-400 hover:text-white-50"
-              >
-                <UIcon name="i-lucide-arrow-right" class="size-4" />
-                {{ t.nav.cv }}
-              </NuxtLink>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- Contacto -->
-    <section v-else-if="page === 'contact'" class="py-16 lg:py-20">
+    <section v-if="page === 'contact'" class="py-16 lg:py-20">
       <div class="mx-auto w-full max-w-6xl px-5 sm:px-8">
         <p class="mb-5 inline-flex items-center gap-2 font-mono text-xs text-sky-400">
           <span class="size-2 rounded-full bg-emerald-400 ring-4 ring-emerald-400/20" />
@@ -87,19 +41,19 @@ const whatsappUrl = `https://wa.me/${meta.whatsapp}?text=${encodeURIComponent(t.
           <div class="reveal grid gap-3">
             <a
               :href="`mailto:${meta.email}`"
-              class="flex items-center gap-3 rounded-xl border border-dark-700/70 bg-dark-800/60 px-4 py-3 text-sm transition-all hover:translate-x-1 hover:border-dark-600"
+              class="flex items-center gap-3 rounded-xl border border-dark-700/70 bg-dark-800/60 px-4 py-3 text-sm text-white-100 transition-all hover:translate-x-1 hover:border-dark-600"
             >
               <UIcon name="i-lucide-mail" class="size-4 text-teal-400" />
               {{ meta.email }}
             </a>
             <a
               :href="`tel:${meta.phone.replace(/\s/g, '')}`"
-              class="flex items-center gap-3 rounded-xl border border-dark-700/70 bg-dark-800/60 px-4 py-3 text-sm transition-all hover:translate-x-1 hover:border-dark-600"
+              class="flex items-center gap-3 rounded-xl border border-dark-700/70 bg-dark-800/60 px-4 py-3 text-sm text-white-100 transition-all hover:translate-x-1 hover:border-dark-600"
             >
               <UIcon name="i-lucide-phone" class="size-4 text-teal-400" />
               {{ meta.phone }}
             </a>
-            <span class="flex items-center gap-3 rounded-xl border border-dark-700/70 bg-dark-800/60 px-4 py-3 text-sm">
+            <span class="flex items-center gap-3 rounded-xl border border-dark-700/70 bg-dark-800/60 px-4 py-3 text-sm text-white-100">
               <UIcon name="i-lucide-map-pin" class="size-4 text-teal-400" />
               {{ meta.location }}
             </span>
@@ -107,7 +61,7 @@ const whatsappUrl = `https://wa.me/${meta.whatsapp}?text=${encodeURIComponent(t.
               :href="meta.linkedin"
               target="_blank"
               rel="noopener"
-              class="flex items-center gap-3 rounded-xl border border-dark-700/70 bg-dark-800/60 px-4 py-3 text-sm transition-all hover:translate-x-1 hover:border-dark-600"
+              class="flex items-center gap-3 rounded-xl border border-dark-700/70 bg-dark-800/60 px-4 py-3 text-sm text-white-100 transition-all hover:translate-x-1 hover:border-dark-600"
             >
               <UIcon name="i-simple-icons-linkedin" class="size-4 text-teal-400" />
               LinkedIn
@@ -116,7 +70,7 @@ const whatsappUrl = `https://wa.me/${meta.whatsapp}?text=${encodeURIComponent(t.
               :href="meta.github"
               target="_blank"
               rel="noopener"
-              class="flex items-center gap-3 rounded-xl border border-dark-700/70 bg-dark-800/60 px-4 py-3 text-sm transition-all hover:translate-x-1 hover:border-dark-600"
+              class="flex items-center gap-3 rounded-xl border border-dark-700/70 bg-dark-800/60 px-4 py-3 text-sm text-white-100 transition-all hover:translate-x-1 hover:border-dark-600"
             >
               <UIcon name="i-simple-icons-github" class="size-4 text-teal-400" />
               GitHub
@@ -125,7 +79,7 @@ const whatsappUrl = `https://wa.me/${meta.whatsapp}?text=${encodeURIComponent(t.
               :href="whatsappUrl"
               target="_blank"
               rel="noopener"
-              class="flex items-center gap-3 rounded-xl border border-dark-700/70 bg-dark-800/60 px-4 py-3 text-sm transition-all hover:translate-x-1 hover:border-dark-600"
+              class="flex items-center gap-3 rounded-xl border border-dark-700/70 bg-dark-800/60 px-4 py-3 text-sm text-white-100 transition-all hover:translate-x-1 hover:border-dark-600"
             >
               <UIcon name="i-simple-icons-whatsapp" class="size-4 text-teal-400" />
               {{ t.whatsappCta }} · {{ t.whatsappSub }}
@@ -161,7 +115,7 @@ const whatsappUrl = `https://wa.me/${meta.whatsapp}?text=${encodeURIComponent(t.
             />
             <button
               type="submit"
-              class="inline-flex items-center justify-center gap-2 self-start rounded-xl bg-rose-500 px-5 py-2.5 text-sm font-semibold text-white-50 transition-colors hover:bg-rose-400"
+              class="inline-flex items-center justify-center gap-2 self-start rounded-xl bg-emerald-500 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-emerald-400"
             >
               <UIcon name="i-lucide-send" class="size-4" />
               {{ t.send }}
@@ -183,13 +137,13 @@ const whatsappUrl = `https://wa.me/${meta.whatsapp}?text=${encodeURIComponent(t.
         <p class="text-white-400">{{ profile.description }}</p>
 
         <h2 class="reveal mt-12 mb-4 flex items-center gap-3 text-2xl font-bold tracking-tight text-white-50">
-          <UIcon name="i-lucide-user" class="size-6 text-rose-400" />
+          <UIcon name="i-lucide-user" class="size-6 text-emerald-400" />
           {{ t.sectionProfile }}
         </h2>
         <p class="reveal leading-relaxed text-white-200">{{ profile.about }}</p>
 
         <h2 class="reveal mt-12 mb-4 flex items-center gap-3 text-2xl font-bold tracking-tight text-white-50">
-          <UIcon name="i-lucide-sparkles" class="size-6 text-rose-400" />
+          <UIcon name="i-lucide-sparkles" class="size-6 text-emerald-400" />
           {{ t.profileSkills }}
         </h2>
         <div class="reveal flex flex-wrap gap-2">
@@ -203,7 +157,7 @@ const whatsappUrl = `https://wa.me/${meta.whatsapp}?text=${encodeURIComponent(t.
         </div>
 
         <h2 class="reveal mt-12 mb-6 flex items-center gap-3 text-2xl font-bold tracking-tight text-white-50">
-          <UIcon name="i-lucide-briefcase" class="size-6 text-rose-400" />
+          <UIcon name="i-lucide-briefcase" class="size-6 text-emerald-400" />
           {{ t.profileExperience }}
         </h2>
         <div class="space-y-9">
@@ -236,14 +190,14 @@ const whatsappUrl = `https://wa.me/${meta.whatsapp}?text=${encodeURIComponent(t.
         <div class="reveal mt-12 flex flex-wrap gap-3">
           <NuxtLink
             :to="resumePath(lang)"
-            class="inline-flex items-center gap-2 rounded-xl border border-dark-600 bg-dark-800/50 px-5 py-2.5 text-sm font-semibold text-white-200 transition-colors hover:border-rose-400 hover:text-white-50"
+            class="inline-flex items-center gap-2 rounded-xl border border-dark-600 bg-dark-800/50 px-5 py-2.5 text-sm font-semibold text-white-200 transition-colors hover:border-emerald-400 hover:text-white-50"
           >
             <UIcon name="i-lucide-arrow-right" class="size-4" />
             {{ t.backToCv }}
           </NuxtLink>
           <a
             :href="`mailto:${meta.email}`"
-            class="inline-flex items-center gap-2 rounded-xl bg-rose-500 px-5 py-2.5 text-sm font-semibold text-white-50 transition-colors hover:bg-rose-400"
+            class="inline-flex items-center gap-2 rounded-xl bg-emerald-500 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-emerald-400"
           >
             <UIcon name="i-lucide-mail" class="size-4" />
             {{ t.profileContact }}

@@ -23,14 +23,15 @@ CV digital de Sergio Jurado Casado, parte de senseikatana.com. Se despliega en
 - `app/components/{Header,Footer,LangSwitcher,ThemeToggle}.vue` — mismos nombres que en
   Astro (`src/components/*.astro`) y React (`src/components/*.tsx`)
 - `app/composables/{useLang,useResumeSeo,useReveal}.ts` — equivalente a `src/lib/*` de React
-- `app/data/resume.ts` — única fuente de verdad; en Astro y React vive en `src/data/resume.ts`
+- `app/data/content.json` — única fuente de verdad (contenido editable sin código); equivalente a
+  `src/data/content.json` de Astro y React
+- `app/data/resume.ts` — re-export tipado de `content.json` (interfaces `Resume`, `UiStrings`…)
 - `tests/resume.test.ts` — mismo test que los otros dos stacks (solo cambia el import)
 
 ### Data Layer
 
-- `app/data/resume.ts` es la única fuente de verdad: CV, perfiles, servicios, secciones y UI
-  en ES/CA/EN. Debe mantener el mismo shape que `withastro/src/data/resume.ts` y
-  `withreact/src/data/resume.ts`
+- `app/data/content.json` es la única fuente de verdad: CV, perfiles, servicios, secciones y UI
+  en ES/CA/EN. `app/data/resume.ts` lo re-exporta tipado
 - Assets públicos bajo `public/resume/` (PDF, foto, favicon) porque el Worker solo
   atiende `/resume/*`
 

@@ -13,6 +13,7 @@ const globals = {
   nextTick: 'readonly',
   onMounted: 'readonly',
   onBeforeUnmount: 'readonly',
+  useState: 'readonly',
   // Nuxt
   useRoute: 'readonly',
   useRouter: 'readonly',

@@ -26,7 +26,7 @@ const linkFor = (code: string) => {
       :hreflang="l.code"
       class="rounded-full px-2 py-0.5 font-mono text-[0.7rem] font-semibold transition-colors"
       :class="l.code === lang
-        ? 'bg-rose-500 text-white-50'
+        ? 'bg-emerald-500 text-white'
         : 'text-white-500 hover:text-white-100'"
     >
       {{ l.label }}

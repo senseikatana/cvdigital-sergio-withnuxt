@@ -5,10 +5,10 @@ const { lang, t } = useLang()
 const route = useRoute()
 
 const navItems = computed(() => [
-  { path: '', label: t.value.nav.cv },
-  { path: 'services', label: t.value.nav.services },
   { path: 'contact', label: t.value.nav.contact },
 ])
+
+const whatsappUrl = `https://wa.me/${meta.whatsapp}?text=${encodeURIComponent(t.value.whatsappPrefill)}`
 
 function isActive(path: string) {
   const href = resumePath(lang.value, path)
@@ -19,14 +19,6 @@ function isActive(path: string) {
 <template>
   <header class="sticky top-0 z-50 h-16 border-b border-dark-700/70 bg-dark-900/80 backdrop-blur-md">
     <div class="mx-auto flex h-16 w-full max-w-6xl items-center gap-5 px-5 sm:px-8">
-      <NuxtLink
-        :to="resumePath(lang)"
-        class="inline-flex items-baseline gap-2 text-lg font-bold tracking-tight text-white-50"
-      >
-        SJ
-        <span class="hidden font-mono text-[0.7rem] font-medium text-white-500 sm:inline">senseikatana/resume</span>
-      </NuxtLink>
-
       <nav class="hidden flex-1 gap-1.5 md:flex" aria-label="Principal">
         <NuxtLink
           v-for="item in navItems"
@@ -40,6 +32,15 @@ function isActive(path: string) {
         >
           {{ item.label }}
         </NuxtLink>
+        <a
+          :href="whatsappUrl"
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center gap-1.5 rounded-full border border-[oklch(0.62_0.14_155)]/50 px-3 py-1.5 text-sm font-semibold text-[oklch(0.55_0.13_155)] transition-colors hover:border-[oklch(0.62_0.14_155)] hover:bg-[oklch(0.62_0.14_155)]/10 dark:text-[oklch(0.78_0.12_155)]"
+        >
+          <UIcon name="i-simple-icons-whatsapp" class="size-4" />
+          WhatsApp
+        </a>
       </nav>
 
       <div class="ml-auto flex items-center gap-2">

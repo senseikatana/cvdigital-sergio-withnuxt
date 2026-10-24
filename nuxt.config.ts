@@ -42,8 +42,11 @@ export default defineNuxtConfig({
       crawlLinks: false,
       routes: [
         '/resume/',
-        ...langs.map(lang => `/resume/${lang}/`),
-        ...langs.flatMap(lang => pages.map(page => `/resume/${lang}/${page}/`)),
+        '/',
+        '/ca/',
+        '/en/',
+        ...langs.map((lang: string) => `/resume/${lang}/`),
+        ...langs.flatMap((lang: string) => pages.map((page: string) => `/resume/${lang}/${page}/`)),
       ],
     },
   },

@@ -51,7 +51,7 @@ onBeforeUnmount(() => observer?.disconnect())
           </p>
 
           <h1 class="mb-3 text-[clamp(2.1rem,5vw,3.4rem)] font-bold leading-[1.08] tracking-tight text-white-50">
-            {{ t.heroGreeting }} <em class="not-italic text-rose-400">{{ r.name }}</em>
+            {{ t.heroGreeting }} <em class="not-italic text-emerald-400">{{ r.name }}</em>
           </h1>
 
           <p class="mb-4 text-lg font-medium text-sky-400 md:text-xl">{{ r.title }}</p>
@@ -96,14 +96,14 @@ onBeforeUnmount(() => observer?.disconnect())
             <a
               :href="meta.pdfUrl"
               download="CV_sergio-jurado.pdf"
-              class="inline-flex items-center gap-2 rounded-xl bg-rose-500 px-5 py-2.5 text-sm font-semibold text-white-50 transition-colors hover:bg-rose-400"
+              class="inline-flex items-center gap-2 rounded-xl bg-emerald-500 px-5 py-2.5 text-sm font-semibold text-white-50 transition-colors hover:bg-emerald-400"
             >
               <UIcon name="i-lucide-download" class="size-4" />
               {{ t.downloadPdf }}
             </a>
             <a
               href="#perfiles"
-              class="inline-flex items-center gap-2 rounded-xl border border-dark-600 bg-dark-800/50 px-5 py-2.5 text-sm font-semibold text-white-200 transition-colors hover:border-rose-400 hover:text-white-50"
+              class="inline-flex items-center gap-2 rounded-xl border border-dark-600 bg-dark-800/50 px-5 py-2.5 text-sm font-semibold text-white-200 transition-colors hover:border-emerald-400 hover:text-white-50"
             >
               {{ t.viewProfiles }}
             </a>
@@ -134,11 +134,11 @@ onBeforeUnmount(() => observer?.disconnect())
           :href="`#${section.id}`"
           class="inline-flex shrink-0 items-center gap-2 rounded-full border px-3.5 py-2 text-sm transition-colors"
           :class="activeSection === section.id
-            ? 'border-rose-400 bg-rose-500/10 text-white-50'
+            ? 'border-emerald-400 bg-emerald-500/10 text-white-50'
             : 'border-dark-700/70 bg-dark-800/50 text-white-400 hover:border-dark-600 hover:text-white-50'"
           :aria-current="activeSection === section.id ? 'true' : undefined"
         >
-          <span class="font-mono text-[0.7rem] text-rose-400">{{ section.label }}</span>
+          <span class="font-mono text-[0.7rem] text-emerald-400">{{ section.label }}</span>
           <UIcon :name="`i-lucide-${section.icon}`" class="size-4 text-sky-400" />
           {{ section.title }}
         </a>
@@ -149,7 +149,7 @@ onBeforeUnmount(() => observer?.disconnect())
     <section id="perfil" class="scroll-mt-36 bg-dark-950 py-16">
       <div class="reveal mx-auto w-full max-w-3xl px-5 sm:px-8">
         <h2 class="mb-5 flex items-center gap-3 text-2xl font-bold tracking-tight text-white-50 md:text-3xl">
-          <UIcon name="i-lucide-user" class="size-6 text-rose-400" />
+          <UIcon name="i-lucide-user" class="size-6 text-emerald-400" />
           {{ t.sectionProfile }}
         </h2>
         <p class="text-lg leading-relaxed text-white-200">{{ r.summary }}</p>
@@ -160,7 +160,7 @@ onBeforeUnmount(() => observer?.disconnect())
     <section id="experiencia" class="scroll-mt-36 bg-dark-900 py-16">
       <div class="mx-auto w-full max-w-3xl px-5 sm:px-8">
         <h2 class="reveal mb-2 flex items-center gap-3 text-2xl font-bold tracking-tight text-white-50 md:text-3xl">
-          <UIcon name="i-lucide-briefcase" class="size-6 text-rose-400" />
+          <UIcon name="i-lucide-briefcase" class="size-6 text-emerald-400" />
           {{ t.sectionExperience }}
         </h2>
         <p class="reveal mb-9 text-white-400">{{ t.experienceSubtitle }}</p>
@@ -199,7 +199,7 @@ onBeforeUnmount(() => observer?.disconnect())
     <section id="formacion" class="scroll-mt-36 bg-dark-950 py-16">
       <div class="mx-auto w-full max-w-6xl px-5 sm:px-8">
         <h2 class="reveal mb-6 flex items-center gap-3 text-2xl font-bold tracking-tight text-white-50 md:text-3xl">
-          <UIcon name="i-lucide-graduation-cap" class="size-6 text-rose-400" />
+          <UIcon name="i-lucide-graduation-cap" class="size-6 text-emerald-400" />
           {{ t.sectionEducation }}
         </h2>
 
@@ -224,19 +224,19 @@ onBeforeUnmount(() => observer?.disconnect())
     <section id="skills" class="scroll-mt-36 bg-dark-900 py-16">
       <div class="mx-auto w-full max-w-3xl px-5 sm:px-8">
         <h2 class="reveal mb-6 flex items-center gap-3 text-2xl font-bold tracking-tight text-white-50 md:text-3xl">
-          <UIcon name="i-lucide-sparkles" class="size-6 text-rose-400" />
+          <UIcon name="i-lucide-sparkles" class="size-6 text-emerald-400" />
           {{ t.sectionSkills }}
         </h2>
 
         <div class="mb-10 grid gap-10 md:grid-cols-2">
           <div class="reveal">
             <h3 class="mb-4 flex items-center gap-2 text-lg font-semibold text-white-100">
-              <UIcon name="i-lucide-heart" class="size-4 text-rose-400" />
+              <UIcon name="i-lucide-heart" class="size-4 text-emerald-400" />
               {{ t.softSkills }}
             </h3>
             <ul class="space-y-3">
               <li v-for="skill in r.softSkills" :key="skill" class="flex gap-2 text-sm text-white-200">
-                <UIcon name="i-lucide-heart" class="mt-0.5 size-4 shrink-0 text-rose-400" />
+                <UIcon name="i-lucide-heart" class="mt-0.5 size-4 shrink-0 text-emerald-400" />
                 <span>{{ skill }}</span>
               </li>
             </ul>
@@ -276,7 +276,7 @@ onBeforeUnmount(() => observer?.disconnect())
     <section id="extra" class="scroll-mt-36 bg-dark-950 py-16">
       <div class="mx-auto w-full max-w-3xl px-5 sm:px-8">
         <h2 class="reveal mb-6 flex items-center gap-3 text-2xl font-bold tracking-tight text-white-50 md:text-3xl">
-          <UIcon name="i-lucide-info" class="size-6 text-rose-400" />
+          <UIcon name="i-lucide-info" class="size-6 text-emerald-400" />
           {{ t.sectionAvailability }}
         </h2>
         <ul class="reveal space-y-4">
@@ -296,7 +296,7 @@ onBeforeUnmount(() => observer?.disconnect())
     <section id="perfiles" class="scroll-mt-36 bg-dark-900 py-16">
       <div class="mx-auto w-full max-w-6xl px-5 sm:px-8">
         <h2 class="reveal mb-2 flex items-center gap-3 text-2xl font-bold tracking-tight text-white-50 md:text-3xl">
-          <UIcon name="i-lucide-briefcase" class="size-6 text-rose-400" />
+          <UIcon name="i-lucide-briefcase" class="size-6 text-emerald-400" />
           {{ t.profilesTitle }}
         </h2>
         <p class="reveal mb-8 text-white-400">{{ t.profilesSubtitle }}</p>
@@ -310,7 +310,7 @@ onBeforeUnmount(() => observer?.disconnect())
           >
             <h3 class="font-semibold text-white-100">{{ profiles[id][lang].title }}</h3>
             <p class="mt-1 text-sm text-white-400">{{ profiles[id][lang].description }}</p>
-            <span class="mt-auto inline-flex items-center gap-1.5 pt-4 text-sm font-semibold text-rose-400 transition-all group-hover:gap-2.5">
+            <span class="mt-auto inline-flex items-center gap-1.5 pt-4 text-sm font-semibold text-emerald-400 transition-all group-hover:gap-2.5">
               {{ t.viewProfile }}
               <UIcon name="i-lucide-arrow-right" class="size-4" />
             </span>
@@ -325,14 +325,14 @@ onBeforeUnmount(() => observer?.disconnect())
               <a
                 :href="meta.pdfUrl"
                 download="CV_sergio-jurado.pdf"
-                class="inline-flex items-center gap-2 rounded-xl bg-rose-500 px-5 py-2.5 text-sm font-semibold text-white-50 transition-colors hover:bg-rose-400"
+                class="inline-flex items-center gap-2 rounded-xl bg-emerald-500 px-5 py-2.5 text-sm font-semibold text-white-50 transition-colors hover:bg-emerald-400"
               >
                 <UIcon name="i-lucide-download" class="size-4" />
                 {{ t.downloadPdf }}
               </a>
               <a
                 :href="`mailto:${meta.email}`"
-                class="inline-flex items-center gap-2 rounded-xl border border-dark-600 bg-dark-900/50 px-5 py-2.5 text-sm font-semibold text-white-200 transition-colors hover:border-rose-400 hover:text-white-50"
+                class="inline-flex items-center gap-2 rounded-xl border border-dark-600 bg-dark-900/50 px-5 py-2.5 text-sm font-semibold text-white-200 transition-colors hover:border-emerald-400 hover:text-white-50"
               >
                 <UIcon name="i-lucide-mail" class="size-4" />
                 {{ t.sendEmail }}
