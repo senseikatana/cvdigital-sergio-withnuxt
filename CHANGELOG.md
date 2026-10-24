@@ -97,3 +97,49 @@
 - Blog with Nuxt Content v3
 - Store with cart and Stripe checkout
 - Unit tests with Vitest
+
+## [2.0.1] - 2026-10-24
+
+Maintenance release with 1 change.
+
+- [x] 🔹 ]7;file://localhost/home/senseikatana/Proyectos/cvdigital-sergio-withnuxtbun add v1.4.4 (38afee6c8)
+  - `.atl/.skill-registry.cache.json`
+  - `.atl/skill-registry.md`
+  - `.gitignore`
+  - `.husky/pre-commit`
+  - `AGENTS.md`
+  - `DESIGN.md`
+  - `README.md`
+  - `app/app.config.ts`
+  - `app/app.vue`
+  - `app/assets/css/main.css`
+  - `app/assets/cv-sergiojurado_photo_2026.pdf`
+  - `app/assets/cv.md`
+  - `app/assets/index.html`
+  - `app/components/Footer.vue`
+  - `app/components/Header.vue`
+  - `app/components/LangSwitcher.vue`
+  - `app/components/ThemeToggle.vue`
+  - `app/composables/useLang.ts`
+  - `app/composables/useResumeSeo.ts`
+  - `app/composables/useReveal.ts`
+  - `app/data/brand.json`
+  - `app/data/projects.json`
+  - `app/data/resume.ts`
+  - `app/layouts/default.vue`
+  - `app/pages/resume/[lang]/[page].vue`
+  - `app/pages/resume/[lang]/index.vue`
+  - `app/pages/resume/index.vue`
+  - `bun.lock`
+  - `eslint.config.mjs`
+  - `nuxt.config.ts`
+  - `package.json`
+  - `public/resume/cv/sergio-jurado.jpg`
+  - `public/resume/cv/sergio-jurado.pdf`
+  - `public/resume/favicon.svg`
+  - `tests/resume.test.ts`
+  - `tsconfig.json`
+  - `uploads/.gitkeep`
+  - `vitest.config.ts`
+  - `wrangler.jsonc`
+
